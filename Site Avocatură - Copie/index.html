@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Deschisă Realistă</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    /* Contenitorul cărții */
+    .carte {
+      position: relative;
+      width: 350px;
+      height: 250px;
+      transform-style: preserve-3d;
+      transform: rotateX(70deg); /* Perspectivă din jos */
+      transform-origin: bottom;
+      transition: transform 1s ease-in-out;
+    }
+
+    /* Pagina 1 */
+    .pagina {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border: 1px solid #aaa;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transform-origin: left;
+      transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
+    }
+
+    /* Pagina 2 (a doua pagină va fi rotită pe axa Y) */
+    .pagina-2 {
+      transform: rotateY(-180deg);
+      box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Adăugăm un efect la hover pentru a deschide cartea */
+    .carte:hover {
+      transform: rotateX(0deg);
+    }
+
+    /* La hover, paginile se răsucesc */
+    .carte:hover .pagina {
+      transform: rotateY(180deg);
+      box-shadow: -4px 0px 6px rgba(0, 0, 0, 0.2); /* Umbra pe pagina 1 */
+    }
+
+    /* Efectul de deschidere al cărții (răsucire a paginilor) */
+    .carte:hover .pagina-2 {
+      transform: rotateY(0deg); /* A doua pagină se rotește în poziția sa */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Contenitorul pentru cartea deschisă -->
+  <div class="carte">
+    <div class="pagina"></div>
+    <div class="pagina pagina-2"></div>
+  </div>
+
+</body>
+</html>
